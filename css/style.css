@@ -1,15 +1,21 @@
 :root {
     --azul-1: #484970;
     --azul-2: #1D0153;
+    --azul-3: #4A0080;
     --rosa-1: #E584AA
     --rosa-2: #951853;
     --white: #FEFEFE;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
 body {
-    padding-top: 100px;
+    padding-top: 3rem;
     margin: 0;
-    background: linear-gradient(to right, var(--azul-1) 0%, var(--azul-2) 50%, var(--white) 50%, var(--white) 100%);
+    background: linear-gradient(to right, var(--azul-3) 0%, var(--azul-3) 50%, var(--white) 50%, var(--white) 100%);
 }
 
 header {
@@ -30,13 +36,34 @@ header {
 }
 
 .principal {
+    padding: 0 2rem;
     display: flex;
-    align-items: stretch;    
+    align-items: stretch;  
+    height: calc(100% - 3rem);  
 }
 
 .container1 {
     width: 50%;
-    background-color: red;
+    margin: auto 0;
+    text-align: center;
+
+}
+
+.logo-principal {
+    width: 60%;
+
+}
+
+.descricao-principal {
+    color: var(--white);
+    font-weight: normal;
+    padding: 0 3rem;
+}
+
+#p-adicionar {
+    text-decoration: underline;
+    color: #FFAEE8;
+    cursor: pointer;
 }
 
 .container2 {

@@ -125,7 +125,7 @@ ul {
 }
 
 #modal-overlay {
-    display: block; /* display: block */
+    display: none; /* display: flex */
     position: fixed;
     z-index: 30;
     left: 0;
@@ -133,7 +133,6 @@ ul {
     width: 100%;
     height: 100%;
     background-color: var(--background-transparent);
-    display: flex;
     justify-content: center;
     align-items: center;    
 }
@@ -193,4 +192,54 @@ ul {
 
 #edit {
     display: none;
+}
+
+.contato {
+    width: 50%;
+    text-align: center;
+    margin: auto 0;
+}
+
+.contato p {
+    font-size: large;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.btns {
+    display: flex;
+    color: var(--rosa-2);
+    width: 60%;
+    margin: 3rem auto;
+    align-items: center;
+}
+
+.btn-contato {
+    padding: 0.5rem;
+    background-color: var(--rosa-1);
+    border-radius: 10px;
+    border-color: var(--rosa-1);
+    text-transform: uppercase;
+    width: 7rem;
+}
+
+.btn-contato:hover {
+    font-weight: bold;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+#logo {
+    max-width: 20%;
+    animation: rotation 30s infinite linear;
+    margin-top: 1rem;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
 }

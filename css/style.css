@@ -5,6 +5,7 @@
     --rosa-1: #E584AA;
     --rosa-2: #951853;
     --white: #FEFEFE;
+    --background-transparent: #1c0153a2;
 }
 
 html, body {
@@ -16,12 +17,13 @@ body {
     padding-top: 3rem;
     margin: 0;
     background: linear-gradient(to right, var(--azul-3) 0%, var(--azul-3) 50%, var(--white) 50%, var(--white) 100%);
+    height: calc(100% - 3rem);
 }
 
 header {
     text-decoration: none;
     text-align: right;
-    padding: 1rem;
+    padding: 1.5rem;
     position: fixed;
     top: 0;
     width: 100%;
@@ -31,7 +33,7 @@ header {
     text-decoration: none;
     font-weight: bold;
     color: var(--azul-2);
-    margin-right: 3rem;
+    margin-right: 4rem;
     font-size: large;
 }
 
@@ -42,7 +44,7 @@ header {
 .principal {
     padding: 0 2rem;
     display: flex;
-    align-items: stretch;  
+    align-items: stretch;
     height: calc(100% - 3rem);  
 }
 
@@ -50,7 +52,6 @@ header {
     width: 50%;
     margin: auto 0;
     text-align: center;
-
 }
 
 .logo-principal {
@@ -123,11 +124,73 @@ ul {
     cursor: pointer;
 }
 
+#modal-overlay {
+    display: block; /* display: block */
+    position: fixed;
+    z-index: 30;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-transparent);
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.modal {
+    text-align: center;
+    background-color: var(--white);
+    width: 30%;
+    height: fit-content;
+    border-radius: 30px;
+}
 
 
+.nova-tarefa h3 {
+    color: var(--azul-2);
+    padding: 1rem;
+}
 
+.nova-tarefa input {
+    background-color: var(--rosa-1);
+    padding: 0.5rem;
+    border-radius: 10px;
+    border-color: var(--rosa-1);
+    width: 80%;
+}
 
+.nova-tarefa p {
+    padding: 0;
+    margin: 0;
+    margin-top: 1rem;
+}
 
+#date {
+    background-color: var(--white);
+    border: none;
+    text-align: center;
+    color: var(--azul-3);
+    width: fit-content;
+    font-weight: bold;
+    margin: 0  0 1rem 0;
+}
 
+.btn-tarefa {
+    padding: 0.5rem;
+    background-color: var(--rosa-1);
+    border-radius: 10px;
+    border-color: var(--rosa-1);
+    text-transform: uppercase;
+    margin-bottom: 1rem;    
+}
 
+.btn-tarefa:hover {
+    font-weight: bold;
+    transform: scale(1.05);
+    cursor: pointer;
+}
 
+#edit {
+    display: none;
+}

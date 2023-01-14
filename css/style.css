@@ -1,0 +1,48 @@
+:root {
+    --azul-1: #484970;
+    --azul-2: #1D0153;
+    --rosa-1: #E584AA
+    --rosa-2: #951853;
+    --white: #FEFEFE;
+}
+
+body {
+    padding-top: 100px;
+    margin: 0;
+    background: linear-gradient(to right, var(--azul-1) 0%, var(--azul-2) 50%, var(--white) 50%, var(--white) 100%);
+}
+
+header {
+    text-decoration: none;
+    text-align: right;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.menu {
+    padding: 0 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--azul-2);
+
+}
+
+.principal {
+    display: flex;
+    align-items: stretch;    
+}
+
+.container1 {
+    width: 50%;
+    background-color: red;
+}
+
+.container2 {
+    width: 50%;
+    background-color: purple;
+}
+
+
+

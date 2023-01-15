@@ -1,8 +1,20 @@
 //@ FUNÇÃO PARA ABRIR O MODAL
 function abrirModal(){
-    console.log("abrir modal")
+    const modal = document.getElementById("modal-overlay")
+    modal.style.display = "flex"
 }
 abrirModal()
+
+//@ FUNÇÃO PARA FECHAR O MODAL
+function fecharModal() {
+    document.documentElement.onclick = (event) => {
+        const overlay = document.getElementById("modal-overlay");
+        if (event.target == overlay) {
+            overlay.style.display = "none";
+        }
+    }
+}
+fecharModal()
 
 //@FUNÇÃO PARA CHAMAR O MODAL
 function adicionarEditarPerfil(){

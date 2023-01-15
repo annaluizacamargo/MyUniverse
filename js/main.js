@@ -108,9 +108,9 @@ function salvarLocalstorage(precisaSalvar, nomeUser, dateUser) {
     }
 }
 
-let nameUserBefore = null
 
 //@ Função para editar o Usuário
+let nameUserBefore = null
 function edit(){
     modal.style.display = "flex";
     modalAdicionar.style.display = "none";
@@ -182,6 +182,17 @@ function fecharModalClickFora() {
     }
 }
 fecharModalClickFora()
+
+
+//@Função para abrir página da API
+let btnsUser = [...document.getElementsByClassName("btn-usuario")]
+btnsUser.forEach((btnUser) => {
+    btnUser.addEventListener("click", (event) => {
+        const valueKey = localStorage.getItem(`${event.target.textContent}`);
+        localStorage.setItem("user-api", valueKey);
+        window.location.href = '/MyUniverse/result-api.html';
+    })
+})
 
 //const newDate = new Date(dateUser)
 //console.log(newDate.toLocaleString("pt-BR", {timeZone: "UTC"})) //@ CONVERTER DATA EM TIMESTAMP PARA DATA

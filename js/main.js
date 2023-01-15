@@ -6,12 +6,13 @@ let stringDateUser = document.getElementById("date");
 function recuperarDados() {
     for(i = 0; i < localStorage.length; i++){
         let keyUsuario = localStorage.key(i);
-        let valueKey = localStorage.getItem(keyUsuario);
-        let dadosUsuario = JSON.parse(valueKey);
-        let nomeUser = dadosUsuario.nomeUser;
-        let dateUser = dadosUsuario.dateUser;
-
-        criarLi(nomeUser, dateUser, false);
+        if(keyUsuario != "user-api"){
+            let valueKey = localStorage.getItem(keyUsuario);
+            let dadosUsuario = JSON.parse(valueKey);
+            let nomeUser = dadosUsuario.nomeUser;
+            let dateUser = dadosUsuario.dateUser;
+            criarLi(nomeUser, dateUser, false);
+        }
     }
 }
 recuperarDados()
@@ -107,6 +108,7 @@ function salvarLocalstorage(precisaSalvar, nomeUser, dateUser) {
     }
 }
 
+let nameUserBefore = null
 
 //@ Função para editar o Usuário
 function edit(){
@@ -114,7 +116,7 @@ function edit(){
     modalAdicionar.style.display = "none";
     modalEditar.style.display = "inline";
 
-    let nameUserBefore = this.parentElement.firstElementChild;
+    nameUserBefore = this.parentElement.firstElementChild;
     let valueKey = localStorage.getItem(`${nameUserBefore.textContent}`);
     let dadosUsuario = JSON.parse(valueKey);
     let nameUser = dadosUsuario.nomeUser;
@@ -127,17 +129,22 @@ function edit(){
     
     let inputNovoDate = modalEditar.parentElement.querySelector("#date");
     inputNovoDate.value = date;
+}
 
+function editLi(){
     modalEditar.addEventListener("click", () => {
+        let inputNovoNome = modalEditar.parentElement.querySelector("#nome-user");
+        let inputNovoDate = modalEditar.parentElement.querySelector("#date");
         let keyAntiga = nameUserBefore.textContent;
         let novoNome = inputNovoNome.value;
         nameUserBefore.textContent = novoNome;
-        let novoDate = inputNovoDate.value;
+        let novoDate = Date.parse(inputNovoDate.value);
 
         update(keyAntiga, novoNome, novoDate)
         fecharModal()
     })
 }
+editLi()
 
 
 //@ Função para atualizar os dados do localstorage
@@ -175,17 +182,6 @@ function fecharModalClickFora() {
     }
 }
 fecharModalClickFora()
-
-
-//@Função para abrir página da API
-let btnsUser = [...document.getElementsByClassName("btn-usuario")]
-btnsUser.forEach((btnUser) => {
-    btnUser.addEventListener("click", (event) => {
-        window.location.href = '/MyUniverse/result-api.html'
-        console.log(event.target)
-    })
-})
-
 
 //const newDate = new Date(dateUser)
 //console.log(newDate.toLocaleString("pt-BR", {timeZone: "UTC"})) //@ CONVERTER DATA EM TIMESTAMP PARA DATA

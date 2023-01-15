@@ -2,6 +2,7 @@
 const modal = document.getElementById("modal-overlay")
 const modalAdicionar = document.getElementById("add")
 const modalEditar = document.getElementById("edit")
+const nomeUser = document.getElementById("nome-user")
 
 function abrirModalAdicionar(){
     modal.style.display = "flex"
@@ -9,10 +10,13 @@ function abrirModalAdicionar(){
     modalEditar.style.display = "none"
 }
 
-function abrirModalEditar(){
+console.log(nomeUser.textContent)
+function abrirModalEditar(nomeUserAtual){
     modal.style.display = "flex"
     modalAdicionar.style.display = "none"
     modalEditar.style.display = "inline"
+    nomeUser.value = nomeUserAtual
+ 
 }
 
 //@ FUNÇÃO PARA FECHAR O MODAL
@@ -37,25 +41,35 @@ function adicionarPerfil(){
 adicionarPerfil()
 
 function editarPerfil(){
-    const btnEdit = document.getElementsByClassName("fa-edit");
+    const btnsEdit = [...document.getElementsByClassName("fa-edit")];
+    console.log(btnsEdit)
 
-    btnEdit.addEventListener("click", abrirModalEditar)
+    btnsEdit.forEach((btnEdit) => {
+        //console.log(btnEdit)
+        btnEdit.addEventListener("click", (event) => {
+            const btn = event.target
+            const nomeUser = btn.parentElement.firstElementChild.textContent
+            abrirModalEditar(nomeUser)
+            console.log(event.target)
+            console.log(nomeUser)
+        })
+        //console.log("fim loop")   
+    })
 
-    console.log(btnEdit)
+
+    
 }
-//editarPerfil()
+editarPerfil()
 
 //@FUNÇÃO PARA CRIAR LI'S
 const ul = document.getElementById("usuarios");
-console.log(ul)
+//console.log(ul)
 
 //@FUNÇÃO PARA ABRIR PÁGINA API
 const lis = [...document.getElementsByTagName("li")]
-console.log(lis)
+//console.log(lis)
 
 
-
-console.log("MyUniverse")
 
 
 

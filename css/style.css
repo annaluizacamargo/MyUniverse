@@ -101,6 +101,7 @@ ul {
 
 .fas {
     color: var(--azul-1);
+    padding-left: 1rem;
 }
 
 .fas:hover {

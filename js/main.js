@@ -176,6 +176,17 @@ function fecharModalClickFora() {
 }
 fecharModalClickFora()
 
+
+//@Função para abrir página da API
+let btnsUser = [...document.getElementsByClassName("btn-usuario")]
+btnsUser.forEach((btnUser) => {
+    btnUser.addEventListener("click", (event) => {
+        window.location.href = '/MyUniverse/result-api.html'
+        console.log(event.target)
+    })
+})
+
+
 //const newDate = new Date(dateUser)
 //console.log(newDate.toLocaleString("pt-BR", {timeZone: "UTC"})) //@ CONVERTER DATA EM TIMESTAMP PARA DATA
-
+//<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>

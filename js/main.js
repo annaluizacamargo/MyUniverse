@@ -135,47 +135,22 @@ function edit(){
     let inputNovoDate = modalEditar.parentElement.querySelector("#date")
     inputNovoDate.value = date
 
-
-    
-    console.log(date)
-    console.log(inputNovoDate.value)
-
-
-
-
-    modalEditar.addEventListener("click", (e) => {
-        nameUserBefore.textContent = modalEditar.parentElement.querySelector("#nome-user").value
-
-
-
-        
-        console.log(nameUserBefore)        
+    modalEditar.addEventListener("click", () => {
+        let keyAntiga = nameUserBefore.textContent
+        let novoNome = inputNovoNome.value
+        nameUserBefore.textContent = novoNome
+        let novoDate = inputNovoDate.value
+        update(keyAntiga, novoNome, novoDate)    
     })
-
-    
-
-    editUser(nameUserBefore)
-
-    //nomeUser.value = nomeUserAtual
-    //console.log(nomeUser.textContent)
-    //nomeUser.nomeUser = ""
-    //modalEditar.addEventListener("click", (event) => {
-    //    const novoNomeUser = nomeUser.value
-    //    modal.style.display = "none"
-    //    console.log(novoNomeUser)
-    //    console.log(event.target)
-    //    console.log(modalEditar)
-    //})
-    //console.log(this)
-    //console.log(nameUserBefore)
-    //const btn = this.target
-    //const nomeUser = btn.parentElement.firstElementChild.textContent
-    //editUser(nomeUser)
-    //
-    //console.log(nomeUser)
-
-
 }
+
+
+function update(keyAntiga, novoNome, novoDate){
+    console.log(keyAntiga)
+    localStorage.removeItem(keyAntiga)
+    localStorage.setItem(novoNome, JSON.stringify({nomeUser: novoNome, dateUser: novoDate}))
+}
+
 
 function remove(){
 

@@ -3,8 +3,8 @@
 
 let usuarios = {}
 
-const nomeUser = document.getElementById("nome-user")
-const stringDateUser = document.getElementById("date")
+let nomeUser = document.getElementById("nome-user")
+let stringDateUser = document.getElementById("date")
 
 
 //@ FUNÇÃO PARA ABRIR O MODAL - adicionar
@@ -16,26 +16,42 @@ function abrirModalAdicionar(){
     const btnAdicionar = document.getElementById("btn-adicionar");
     const pAdicionar = document.getElementById("p-adicionar");    
     
-    btnAdicionar.addEventListener("click", adicionarPerfil)
-    pAdicionar.addEventListener("click", adicionarPerfil)
+    function exibirModal(){
+        modal.style.display = "flex"
+        modalAdicionar.style.display = "inline"
+        modalEditar.style.display = "none"        
+    }
+
+    btnAdicionar.addEventListener("click", exibirModal)
+    pAdicionar.addEventListener("click", exibirModal)
 }
 abrirModalAdicionar()
 
-function adicionarPerfil(){
-    //Exibir modal
-    modal.style.display = "flex"
-    modalAdicionar.style.display = "inline"
-    modalEditar.style.display = "none"
+    let nomeUserNovo = ""
+    let dateUser = ""
 
-    //Adicionar perfil
-    //const nomeUser = 
-    console.log(this)
-    console.log(modal)
-    modalAdicionar.addEventListener("click", (event) => {
-        const nomeUserNovo = nomeUser.value
-        const dateUser = Date.parse(stringDateUser.value)
-        criarLi(nomeUserNovo, dateUser)
-    })
+modalAdicionar.addEventListener("click", adicionarPerfil)
+function adicionarPerfil(){
+
+    let lis = [...document.getElementsByTagName("li")]
+
+    if(lis.length < 5){
+        nomeUserNovo = nomeUser.value
+        dateUser = Date.parse(stringDateUser.value)
+
+        if(nomeUserNovo && dateUser){
+            criarLi(nomeUserNovo, dateUser)
+            fecharModal()
+            
+        } else {
+            alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia")
+        }
+    } else {
+        fecharModal()   
+        alert("O número máximo de pessoas cadastradas foi atingido. Para adicionar uma outra pessoa você pode remover as anteriores ou editar seus dados")
+    }
+
+
 }
 
 //@ CRIAR AS LI'S
@@ -48,6 +64,26 @@ function criarLi(nomeUser, dateUser){
     //criando a li =
     const li = document.createElement("li")
     li.className = "usuario"
+
+    //criando btn do usuário =
+    const btnUser = document.createElement("button")
+    btnUser.className = "btn-usuario"
+    btnUser.innerHTML = nomeUser
+    li.appendChild(btnUser)
+
+    //criando btn de editar = 
+    const editButton = document.createElement("i");
+    editButton.className = "fas fa-edit";
+    li.appendChild(editButton)
+
+    //criando btn de remover = 
+    const deleteButton = document.createElement("i");
+    deleteButton.className = "fas fa-trash-alt";
+    //@@@@deleteButton.addEventListener("click", deletar);
+    li.appendChild(deleteButton)
+
+    //adicionando a li na ul =
+    ul.appendChild(li)
 }
 
 
@@ -71,17 +107,26 @@ function abrirModalEditar(nomeUserAtual){
     //    console.log(modalEditar)
     //})
 }
+const overlay = document.getElementById("modal-overlay");
 
 //@ FUNÇÃO PARA FECHAR O MODAL
 function fecharModal() {
+    overlay.style.display = "none";
+    nomeUser.value = ""
+    stringDateUser.value = ""
+}
+
+function fecharModalClickFora() {
     document.documentElement.onclick = (event) => {
-        const overlay = document.getElementById("modal-overlay");
         if (event.target == overlay) {
             overlay.style.display = "none";
+            nomeUser.value = ""
+            stringDateUser.value = ""    
         }
     }
+
 }
-fecharModal()
+fecharModalClickFora()
 
 //@FUNÇÃO PARA CHAMAR O MODAL
 
@@ -112,7 +157,7 @@ const ul = document.getElementById("usuarios");
 //console.log(ul)
 
 //@FUNÇÃO PARA ABRIR PÁGINA API
-const lis = [...document.getElementsByTagName("li")]
+
 //console.log(lis)
 
 

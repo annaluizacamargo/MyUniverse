@@ -45,6 +45,8 @@ let nomeUserNovo = ""
 let dateUser = ""
 
 modalAdicionar.addEventListener("click", adicionarPerfil)
+
+
 function adicionarPerfil(){
     let lis = [...document.getElementsByTagName("li")]
 
@@ -120,12 +122,33 @@ function edit(){
     modalEditar.style.display = "inline"
 
     let nameUserBefore = this.parentElement.firstElementChild
-    //let dateUserBefore = 
-    console.log(nameUserBefore) 
+    let valueKey = localStorage.getItem(`${nameUserBefore.textContent}`);
+    let dadosUsuario = JSON.parse(valueKey);
+    let nameUser = dadosUsuario.nomeUser;
+    let dateUser = dadosUsuario.dateUser;
+    const newDate = new Date(dateUser)
+    const date = newDate.toLocaleDateString('en-CA', {timeZone: "UTC"})    
+
+    let inputNovoNome = modalEditar.parentElement.querySelector("#nome-user")
+    inputNovoNome.value = nameUser
+    
+    let inputNovoDate = modalEditar.parentElement.querySelector("#date")
+    inputNovoDate.value = date
+
+
+    
+    console.log(date)
+    console.log(inputNovoDate.value)
+
+
+
 
     modalEditar.addEventListener("click", (e) => {
         nameUserBefore.textContent = modalEditar.parentElement.querySelector("#nome-user").value
 
+
+
+        
         console.log(nameUserBefore)        
     })
 
@@ -143,13 +166,13 @@ function edit(){
     //    console.log(event.target)
     //    console.log(modalEditar)
     //})
-    console.log(this)
-    console.log(nameUserBefore)
-    const btn = this.target
-    const nomeUser = btn.parentElement.firstElementChild.textContent
-    editUser(nomeUser)
-    
-    console.log(nomeUser)
+    //console.log(this)
+    //console.log(nameUserBefore)
+    //const btn = this.target
+    //const nomeUser = btn.parentElement.firstElementChild.textContent
+    //editUser(nomeUser)
+    //
+    //console.log(nomeUser)
 
 
 }

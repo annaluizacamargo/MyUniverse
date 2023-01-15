@@ -140,20 +140,23 @@ function edit(){
         let novoNome = inputNovoNome.value
         nameUserBefore.textContent = novoNome
         let novoDate = inputNovoDate.value
-        update(keyAntiga, novoNome, novoDate)    
+        update(keyAntiga, novoNome, novoDate)   
+        fecharModal() 
     })
 }
 
-
 function update(keyAntiga, novoNome, novoDate){
-    console.log(keyAntiga)
     localStorage.removeItem(keyAntiga)
     localStorage.setItem(novoNome, JSON.stringify({nomeUser: novoNome, dateUser: novoDate}))
 }
 
 
-function remove(){
-
+function remove(event){
+    const liRemove = event.target.parentElement
+    const nameUserRemove = liRemove.firstElementChild.textContent
+    localStorage.removeItem(nameUserRemove)
+    liRemove.remove()
+    
 }
 
 //@ FUNÇÃO PARA FECHAR O MODAL

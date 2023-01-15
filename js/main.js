@@ -1,21 +1,21 @@
 //const newDate = new Date(dateUser)
 //console.log(newDate.toLocaleString("pt-BR", {timeZone: "UTC"})) //@ CONVERTER DATA EM TIMESTAMP PARA DATA
 
-let usuarios = []
-let nomeUser = document.getElementById("nome-user")
-let stringDateUser = document.getElementById("date")
+let usuarios = [];
+let nomeUser = document.getElementById("nome-user");
+let stringDateUser = document.getElementById("date");
 
 //@ Função para recuperar os dados armazenados no localstorage e passar os parâmetros para criar as li's =
 function recuperarDados() {
     for(i = 0; i < localStorage.length; i++){
-        let keyUsuario = localStorage.key(i)
+        let keyUsuario = localStorage.key(i);
         let valueKey = localStorage.getItem(keyUsuario);
-        let dadosUsuario = JSON.parse(valueKey)
+        let dadosUsuario = JSON.parse(valueKey);
 
-        let nomeUser = dadosUsuario.nomeUser
-        let dateUser = dadosUsuario.dateUser
+        let nomeUser = dadosUsuario.nomeUser;
+        let dateUser = dadosUsuario.dateUser;
 
-        criarLi(nomeUser, dateUser, false)       
+        criarLi(nomeUser, dateUser, false);
     }
 }
 recuperarDados()
@@ -41,12 +41,11 @@ function abrirModalAdicionar(){
 }
 abrirModalAdicionar()
 
-    let nomeUserNovo = ""
-    let dateUser = ""
+let nomeUserNovo = ""
+let dateUser = ""
 
 modalAdicionar.addEventListener("click", adicionarPerfil)
 function adicionarPerfil(){
-
     let lis = [...document.getElementsByTagName("li")]
 
     if(lis.length < 5){
@@ -64,8 +63,6 @@ function adicionarPerfil(){
         fecharModal()   
         alert("O número máximo de pessoas cadastradas foi atingido. Para adicionar uma outra pessoa você pode remover as anteriores ou editar seus dados")
     }
-
-
 }
 
 //@ CRIAR AS LI'S
@@ -86,12 +83,13 @@ function criarLi(nomeUser, dateUser, precisaSalvar){
     //criando btn de editar = 
     const editButton = document.createElement("i");
     editButton.className = "fas fa-edit";
+    editButton.addEventListener("click", edit)
     li.appendChild(editButton)
 
     //criando btn de remover = 
     const deleteButton = document.createElement("i");
     deleteButton.className = "fas fa-trash-alt";
-    //@@@@deleteButton.addEventListener("click", deletar);
+    deleteButton.addEventListener("click", remove);
     li.appendChild(deleteButton)
 
     //adicionando a li na ul =
@@ -115,12 +113,26 @@ function salvarLocalstorage(precisaSalvar, nomeUser, dateUser) {
     }
 }
 
-
 //@ FUNÇÃO PARA EDITAR O MODAL
-function abrirModalEditar(nomeUserAtual){
+function edit(){
     modal.style.display = "flex"
     modalAdicionar.style.display = "none"
     modalEditar.style.display = "inline"
+
+    let nameUserBefore = this.parentElement.firstElementChild
+    //let dateUserBefore = 
+    console.log(nameUserBefore) 
+
+    modalEditar.addEventListener("click", (e) => {
+        nameUserBefore.textContent = modalEditar.parentElement.querySelector("#nome-user").value
+
+        console.log(nameUserBefore)        
+    })
+
+    
+
+    editUser(nameUserBefore)
+
     //nomeUser.value = nomeUserAtual
     //console.log(nomeUser.textContent)
     //nomeUser.nomeUser = ""
@@ -131,10 +143,23 @@ function abrirModalEditar(nomeUserAtual){
     //    console.log(event.target)
     //    console.log(modalEditar)
     //})
+    console.log(this)
+    console.log(nameUserBefore)
+    const btn = this.target
+    const nomeUser = btn.parentElement.firstElementChild.textContent
+    editUser(nomeUser)
+    
+    console.log(nomeUser)
+
+
 }
-const overlay = document.getElementById("modal-overlay");
+
+function remove(){
+
+}
 
 //@ FUNÇÃO PARA FECHAR O MODAL
+const overlay = document.getElementById("modal-overlay");
 function fecharModal() {
     overlay.style.display = "none";
     nomeUser.value = ""
@@ -155,26 +180,6 @@ fecharModalClickFora()
 //@FUNÇÃO PARA CHAMAR O MODAL
 
 
-function editarPerfil(){
-    const btnsEdit = [...document.getElementsByClassName("fa-edit")];
-    //console.log(btnsEdit)
-
-    btnsEdit.forEach((btnEdit) => {
-        //console.log(btnEdit)
-        btnEdit.addEventListener("click", (event) => {
-            const btn = event.target
-            const nomeUser = btn.parentElement.firstElementChild.textContent
-            abrirModalEditar(nomeUser)
-            console.log(event.target)
-            console.log(nomeUser)
-        })
-        //console.log("fim loop")   
-    })
-
-
-    
-}
-editarPerfil()
 
 //@FUNÇÃO PARA CRIAR LI'S
 

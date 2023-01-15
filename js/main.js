@@ -1,7 +1,7 @@
 //const newDate = new Date(dateUser)
 //console.log(newDate.toLocaleString("pt-BR", {timeZone: "UTC"})) //@ CONVERTER DATA EM TIMESTAMP PARA DATA
 
-let usuarios = {}
+let usuarios = []
 
 let nomeUser = document.getElementById("nome-user")
 let stringDateUser = document.getElementById("date")
@@ -40,7 +40,7 @@ function adicionarPerfil(){
         dateUser = Date.parse(stringDateUser.value)
 
         if(nomeUserNovo && dateUser){
-            criarLi(nomeUserNovo, dateUser)
+            criarLi(nomeUserNovo, dateUser, true)
             fecharModal()
             
         } else {
@@ -56,11 +56,7 @@ function adicionarPerfil(){
 
 //@ CRIAR AS LI'S
 
-function criarLi(nomeUser, dateUser){
-    console.log(ul)
-    console.log(nomeUser)
-    console.log(dateUser)
-
+function criarLi(nomeUser, dateUser, precisaSalvar){
     //criando a li =
     const li = document.createElement("li")
     li.className = "usuario"
@@ -84,10 +80,24 @@ function criarLi(nomeUser, dateUser){
 
     //adicionando a li na ul =
     ul.appendChild(li)
+
+    //salvar no localstorage
+    salvarLocalstorage(precisaSalvar, nomeUser, dateUser)
 }
 
 
 
+//@ Função para salvar no localstorage =
+function salvarLocalstorage(precisaSalvar, nomeUser, dateUser) {
+    if (precisaSalvar) {
+        const usuario = {
+            nomeUser: nomeUser,
+            dataUser: dateUser
+        }
+        usuarios.push(usuario);
+        localStorage.setItem(`${nomeUser}`, JSON.stringify(usuario));
+    }
+}
 
 
 
@@ -124,7 +134,6 @@ function fecharModalClickFora() {
             stringDateUser.value = ""    
         }
     }
-
 }
 fecharModalClickFora()
 

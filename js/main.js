@@ -2,9 +2,23 @@
 //console.log(newDate.toLocaleString("pt-BR", {timeZone: "UTC"})) //@ CONVERTER DATA EM TIMESTAMP PARA DATA
 
 let usuarios = []
-
 let nomeUser = document.getElementById("nome-user")
 let stringDateUser = document.getElementById("date")
+
+//@ Função para recuperar os dados armazenados no localstorage e passar os parâmetros para criar as li's =
+function recuperarDados() {
+    for(i = 0; i < localStorage.length; i++){
+        let keyUsuario = localStorage.key(i)
+        let valueKey = localStorage.getItem(keyUsuario);
+        let dadosUsuario = JSON.parse(valueKey)
+
+        let nomeUser = dadosUsuario.nomeUser
+        let dateUser = dadosUsuario.dateUser
+
+        criarLi(nomeUser, dateUser, false)       
+    }
+}
+recuperarDados()
 
 
 //@ FUNÇÃO PARA ABRIR O MODAL - adicionar
@@ -57,6 +71,8 @@ function adicionarPerfil(){
 //@ CRIAR AS LI'S
 
 function criarLi(nomeUser, dateUser, precisaSalvar){
+    const ul = document.getElementById("usuarios");
+
     //criando a li =
     const li = document.createElement("li")
     li.className = "usuario"
@@ -92,13 +108,12 @@ function salvarLocalstorage(precisaSalvar, nomeUser, dateUser) {
     if (precisaSalvar) {
         const usuario = {
             nomeUser: nomeUser,
-            dataUser: dateUser
+            dateUser: dateUser
         }
         usuarios.push(usuario);
         localStorage.setItem(`${nomeUser}`, JSON.stringify(usuario));
     }
 }
-
 
 
 //@ FUNÇÃO PARA EDITAR O MODAL
@@ -142,7 +157,7 @@ fecharModalClickFora()
 
 function editarPerfil(){
     const btnsEdit = [...document.getElementsByClassName("fa-edit")];
-    console.log(btnsEdit)
+    //console.log(btnsEdit)
 
     btnsEdit.forEach((btnEdit) => {
         //console.log(btnEdit)
@@ -162,7 +177,7 @@ function editarPerfil(){
 editarPerfil()
 
 //@FUNÇÃO PARA CRIAR LI'S
-const ul = document.getElementById("usuarios");
+
 //console.log(ul)
 
 //@FUNÇÃO PARA ABRIR PÁGINA API

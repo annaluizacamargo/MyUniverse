@@ -2,6 +2,7 @@
 let nomeAPI = document.getElementById("name");
 let dateAPI = document.getElementById("date");
 let imgAPI = document.getElementById("img-api");
+let linkImgAPI = document.getElementById("link-img-api");
 let explanantionAPI = document.getElementById("explanation-api");
 
 
@@ -24,6 +25,7 @@ async function buscaImagemNASA(date) {
     const dadosConvertidos = await consultaDadosData.json();
     
     imgAPI.setAttribute("src", `${dadosConvertidos.url}`);
+    linkImgAPI.setAttribute("href", `${dadosConvertidos.url}`);
     explanantionAPI.innerHTML = `<b>Descrição:</b> ${dadosConvertidos.explanation}`;
 }
 buscaImagemNASA(date);

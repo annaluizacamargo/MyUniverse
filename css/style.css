@@ -130,23 +130,6 @@ ul {
 }
 
 
-
-/*REMOVER???*/
-#btn-adicionar {
-    padding: 0.5rem;
-    background-color: var(--rosa-1);
-    border-radius: 10px;
-    border-color: var(--rosa-1);
-}
-
-#btn-adicionar:hover {
-    font-weight: bold;
-    transform: scale(1.05);
-    cursor: pointer;
-}
-/*REMOVER???*/
-
-
 /*Modal*/
 #modal-overlay {
     display: none; /*display: flex*/

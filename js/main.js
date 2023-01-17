@@ -1,3 +1,11 @@
+//Chave local Storage
+//Adicionar redirecionamento em imagem capturada hoje
+//Erro para data antes de 16/06/1995
+//Erro para depois da data de hoje
+//Remover btn ADD
+
+
+
 let usuarios = [];
 let nomeUser = document.getElementById("nome-user");
 let stringDateUser = document.getElementById("date");
@@ -26,7 +34,6 @@ let nomeUserNovo = "";
 let dateUser = "";
 
 function abrirModalAdicionar() {
-    const btnAdicionar = document.getElementById("btn-adicionar");
     const pAdicionar = document.getElementById("p-adicionar");
 
     function exibirModal() {
@@ -35,7 +42,6 @@ function abrirModalAdicionar() {
         modalEditar.style.display = "none";
     }
 
-    btnAdicionar.addEventListener("click", exibirModal);
     pAdicionar.addEventListener("click", exibirModal);
 }
 abrirModalAdicionar()

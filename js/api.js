@@ -26,7 +26,12 @@ async function buscaImagemNASA(date) {
     
     imgAPI.setAttribute("src", `${dadosConvertidos.url}`);
     linkImgAPI.setAttribute("href", `${dadosConvertidos.url}`);
-    explanantionAPI.innerHTML = `<b>Descrição:</b> ${dadosConvertidos.explanation}`;
+
+    if (!dadosConvertidos.explanation) {
+        explanantionAPI.innerHTML = `Sinto muito, mas não encontramos uma descrição em nossas bases de dados da imagem capturada deste dia.`;
+    } else {
+        explanantionAPI.innerHTML = `<b>Descrição:</b> ${dadosConvertidos.explanation}`;        
+    }
 }
 buscaImagemNASA(date);
 

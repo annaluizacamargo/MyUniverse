@@ -1,5 +1,3 @@
-//Chave local Storage
-
 let usuarios = [];
 let nomeUser = document.getElementById("nome-user");
 let stringDateUser = document.getElementById("date");
@@ -87,6 +85,7 @@ function avaliarDadosInformados(dateUser, nomeUserNovo) {
             console.log("sim 4")
             criarLi(nomeUserNovo, dateUser, true);
             fecharModal();
+            document. location. reload()
     }
 }
 

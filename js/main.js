@@ -19,9 +19,8 @@ recuperarDados();
 
 
 //@ Função para ver imagem hoje
-const btnImgToday = document.getElementById("img-hoje")
-btnImgToday.addEventListener("click", nasaToday)
-
+const btnImgToday = document.getElementById("img-hoje");
+btnImgToday.addEventListener("click", nasaToday);
 function nasaToday() {
     const valueKey = {
         nomeUser: "Imagem do dia",
@@ -47,20 +46,19 @@ function abrirModalAdicionar() {
         modalAdicionar.style.display = "inline";
         modalEditar.style.display = "none";
     }
-
+    
     pAdicionar.addEventListener("click", exibirModal);
 }
 abrirModalAdicionar();
 
+const dateLimit = Date.parse("1995-06-16"); //803260800000
+const today = Date.parse(new Date()); //Timestamp data hoje
 modalAdicionar.addEventListener("click", adicionarPerfil);
-
-const dateLimit = Date.parse("1995-06-16") //803260800000
-const today = Date.parse(new Date()) //Timestamp data hoje
 
 function adicionarPerfil() {
     let lis = [...document.getElementsByTagName("li")];
-    
-    if(lis.length < 5){
+
+    if (lis.length < 5) {
         nomeUserNovo = nomeUser.value;
         dateUser = Date.parse(stringDateUser.value);
         avaliarDadosInformados(dateUser, nomeUserNovo);
@@ -70,9 +68,9 @@ function adicionarPerfil() {
     }
 }
 
-function avaliarDadosInformados(dateUser, nomeUserNovo) {   
-    switch(true){
-        case(!nomeUserNovo || !dateUser):
+function avaliarDadosInformados(dateUser, nomeUserNovo) {
+    switch (true) {
+        case (!nomeUserNovo || !dateUser):
             alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia");
             break;
         case (dateUser < dateLimit):
@@ -82,12 +80,12 @@ function avaliarDadosInformados(dateUser, nomeUserNovo) {
             alert("Infelizmente ainda não conseguimos viajar no tempo, favor inserir uma data válida :)");
             break;
         default:
-            console.log("sim 4")
             criarLi(nomeUserNovo, dateUser, true);
             fecharModal();
-            document. location. reload()
+            document. location. reload();
     }
 }
+
 
 //@ Função para criar as li's
 function criarLi(nomeUser, dateUser, precisaSalvar) {
@@ -103,13 +101,13 @@ function criarLi(nomeUser, dateUser, precisaSalvar) {
     btnUser.innerHTML = nomeUser;
     li.appendChild(btnUser);
 
-    //criando btn de editar = 
+    //criando btn de editar =
     const editButton = document.createElement("i");
     editButton.className = "fas fa-edit";
     editButton.addEventListener("click", edit);
     li.appendChild(editButton);
 
-    //criando btn de remover = 
+    //criando btn de remover =
     const deleteButton = document.createElement("i");
     deleteButton.className = "fas fa-trash-alt";
     deleteButton.addEventListener("click", remove);
@@ -118,12 +116,12 @@ function criarLi(nomeUser, dateUser, precisaSalvar) {
     //adicionando a li na ul =
     ul.appendChild(li);
 
-    //salvar no localstorage
+    //salvar no localstorage =
     salvarLocalstorage(precisaSalvar, nomeUser, dateUser);
 }
 
 
-//@ Função para salvar no localstorage =
+//@ Função para salvar no localstorage
 function salvarLocalstorage(precisaSalvar, nomeUser, dateUser) {
     if (precisaSalvar) {
         const usuario = {
@@ -153,7 +151,7 @@ function edit() {
 
     let inputNovoNome = modalEditar.parentElement.querySelector("#nome-user");
     inputNovoNome.value = nameUser;
-    
+
     let inputNovoDate = modalEditar.parentElement.querySelector("#date");
     inputNovoDate.value = date;
 }
@@ -174,12 +172,11 @@ function editLi() {
             alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia");
         } else if (novoDate < dateLimit) {
             alert("Sinto muito mas só temos imagens disponíveis a partir do dia 16/06/1995, por favor insira outra data :)");
-    
         } else if (novoDate > today) {
             alert("Infelizmente ainda não conseguimos viajar no tempo, favor inserir uma data válida :)");
         } else {
             update(keyAntiga, novoNome, novoDate);
-            fecharModal();        
+            fecharModal();
         }
     })
 }
@@ -222,8 +219,10 @@ function fecharModalClickFora() {
         }
     }
 }
+
 fecharModalClickFora();
 closeModal.addEventListener("click", fecharModal);
+
 
 //@Função para abrir página da API
 let btnsUser = [...document.getElementsByClassName("btn-usuario")];

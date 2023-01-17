@@ -53,21 +53,11 @@ function adicionarPerfil() {
     if(lis.length < 5){
         nomeUserNovo = nomeUser.value;
         dateUser = Date.parse(stringDateUser.value);
-
-        avaliarDadosInformados(dateUser, nomeUserNovo)
-        
-        //if (nomeUserNovo && dateUser) {
-        //    criarLi(nomeUserNovo, dateUser, true);
-        //    fecharModal();
-        //} else {
-        //    alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia");
-        //}
+        avaliarDadosInformados(dateUser, nomeUserNovo);
     } else {
         fecharModal();
         alert("O número máximo de pessoas cadastradas foi atingido. Para adicionar uma outra pessoa você pode remover as anteriores ou editar seus dados");
     }
-
-   
 }
 
 function avaliarDadosInformados(dateUser, nomeUserNovo) {   
@@ -166,8 +156,20 @@ function editLi() {
         nameUserBefore.textContent = novoNome;
         let novoDate = Date.parse(inputNovoDate.value);
 
-        update(keyAntiga, novoNome, novoDate);
-        fecharModal();
+        if (!novoNome) {
+            alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia");
+            document. location. reload()            
+        } else if (!novoDate) {
+            alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia");
+        } else if (novoDate < dateLimit) {
+            alert("Sinto muito mas só temos imagens disponíveis a partir do dia 16/06/1995, por favor insira outra data :)");
+    
+        } else if (novoDate > today) {
+            alert("Infelizmente ainda não conseguimos viajar no tempo, favor inserir uma data válida :)");
+        } else {
+            update(keyAntiga, novoNome, novoDate);
+            fecharModal();        
+        }
     })
 }
 editLi();

@@ -147,7 +147,7 @@ ul {
 /*REMOVER???*/
 
 
-
+/*Modal*/
 #modal-overlay {
     display: none; /*display: flex*/
     position: fixed;
@@ -352,6 +352,16 @@ p.star {
     }
 
     /*Página principal*/
+    .container2 {
+        background-color: var(--white);
+        width: calc(100% - 8rem);
+        padding: 2rem 4rem;
+    }
+
+    .descricao-secundaria {
+        font-size: medium;
+        padding-bottom: 2rem;
+    }
 
 
     /*Página contato*/

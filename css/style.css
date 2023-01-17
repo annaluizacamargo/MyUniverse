@@ -351,6 +351,7 @@ p.star {
         margin: 0;
     }
 
+
     /*Página principal*/
     .container2 {
         background-color: var(--white);
@@ -361,6 +362,12 @@ p.star {
     .descricao-secundaria {
         font-size: medium;
         padding-bottom: 2rem;
+    }
+
+
+    /*Modal*/
+    .modal {
+        width: 70%;
     }
 
 
@@ -383,5 +390,6 @@ p.star {
     #footer {
         height: 40%;
         padding-bottom: 1rem;
+        background-color: var(--white);
     }
 }

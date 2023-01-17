@@ -2,9 +2,6 @@
 //Adicionar redirecionamento em imagem capturada hoje
 //Erro para data antes de 16/06/1995
 //Erro para depois da data de hoje
-//Remover btn ADD
-
-
 
 let usuarios = [];
 let nomeUser = document.getElementById("nome-user");
@@ -12,9 +9,9 @@ let stringDateUser = document.getElementById("date");
 
 //@ Função para recuperar os dados armazenados no localstorage e passar os parâmetros para criar as li's
 function recuperarDados() {
-    for(i = 0; i < localStorage.length; i++){
+    for (i = 0; i < localStorage.length; i++) {
         let keyUsuario = localStorage.key(i);
-        if(keyUsuario != "user-api"){
+        if (keyUsuario != "user-api") {
             let valueKey = localStorage.getItem(keyUsuario);
             let dadosUsuario = JSON.parse(valueKey);
             let nomeUser = dadosUsuario.nomeUser;
@@ -23,7 +20,7 @@ function recuperarDados() {
         }
     }
 }
-recuperarDados()
+recuperarDados();
 
 
 //@ Função para abrir o modal - adicionar
@@ -44,9 +41,13 @@ function abrirModalAdicionar() {
 
     pAdicionar.addEventListener("click", exibirModal);
 }
-abrirModalAdicionar()
+abrirModalAdicionar();
 
-modalAdicionar.addEventListener("click", adicionarPerfil)
+modalAdicionar.addEventListener("click", adicionarPerfil);
+
+//const dateLimit = new Date("1995-06-16") //803260800000
+//const dateLimit = Date.parse("1995-06-16") //803260800000
+//console.log(dateLimit.getDate())
 
 function adicionarPerfil() {
     let lis = [...document.getElementsByTagName("li")];
@@ -55,7 +56,9 @@ function adicionarPerfil() {
         nomeUserNovo = nomeUser.value;
         dateUser = Date.parse(stringDateUser.value);
 
-        if(nomeUserNovo && dateUser){
+        console.log(dateUser)
+        
+        if (nomeUserNovo && dateUser) {
             criarLi(nomeUserNovo, dateUser, true);
             fecharModal();
         } else {
@@ -65,11 +68,16 @@ function adicionarPerfil() {
         fecharModal();
         alert("O número máximo de pessoas cadastradas foi atingido. Para adicionar uma outra pessoa você pode remover as anteriores ou editar seus dados");
     }
+
+    /* 
+    switch(){
+        case ():
+    }*/
 }
 
 
 //@ Função para criar as li's
-function criarLi(nomeUser, dateUser, precisaSalvar){
+function criarLi(nomeUser, dateUser, precisaSalvar) {
     const ul = document.getElementById("usuarios");
 
     //criando a li =
@@ -116,8 +124,8 @@ function salvarLocalstorage(precisaSalvar, nomeUser, dateUser) {
 
 
 //@ Função para editar o Usuário
-let nameUserBefore = null
-function edit(){
+let nameUserBefore = null;
+function edit() {
     modal.style.display = "flex";
     modalAdicionar.style.display = "none";
     modalEditar.style.display = "inline";
@@ -137,7 +145,7 @@ function edit(){
     inputNovoDate.value = date;
 }
 
-function editLi(){
+function editLi() {
     modalEditar.addEventListener("click", () => {
         let inputNovoNome = modalEditar.parentElement.querySelector("#nome-user");
         let inputNovoDate = modalEditar.parentElement.querySelector("#date");
@@ -146,32 +154,34 @@ function editLi(){
         nameUserBefore.textContent = novoNome;
         let novoDate = Date.parse(inputNovoDate.value);
 
-        update(keyAntiga, novoNome, novoDate)
-        fecharModal()
+        update(keyAntiga, novoNome, novoDate);
+        fecharModal();
     })
 }
-editLi()
+editLi();
 
 
 //@ Função para atualizar os dados do localstorage
-function update(keyAntiga, novoNome, novoDate){
+function update(keyAntiga, novoNome, novoDate) {
     localStorage.removeItem(keyAntiga);
     localStorage.setItem(novoNome, JSON.stringify({nomeUser: novoNome, dateUser: novoDate}));
 }
 
 
 //@ Função para remover o Usuário
-function remove(event){
+function remove(event) {
     const liRemove = event.target.parentElement;
     const nameUserRemove = liRemove.firstElementChild.textContent;
 
     localStorage.removeItem(nameUserRemove);
-    liRemove.remove()
+    liRemove.remove();
 }
 
 
 //@ Função para fechar o modal
 const overlay = document.getElementById("modal-overlay");
+const closeModal = document.querySelector(".close");
+
 function fecharModal() {
     overlay.style.display = "none";
     nomeUser.value = "";
@@ -187,11 +197,11 @@ function fecharModalClickFora() {
         }
     }
 }
-fecharModalClickFora()
-
+fecharModalClickFora();
+closeModal.addEventListener("click", fecharModal);
 
 //@Função para abrir página da API
-let btnsUser = [...document.getElementsByClassName("btn-usuario")]
+let btnsUser = [...document.getElementsByClassName("btn-usuario")];
 btnsUser.forEach((btnUser) => {
     btnUser.addEventListener("click", (event) => {
         const valueKey = localStorage.getItem(`${event.target.textContent}`);

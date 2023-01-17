@@ -33,5 +33,9 @@ buscaImagemNASA(date);
 
 //@ Dando a opção de tradução da descrição para o usuário
 function googleTranslateElementInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+    new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages:'pt,es,en',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+    }, 'google_translate_element');
 }

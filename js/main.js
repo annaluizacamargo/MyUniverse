@@ -1,5 +1,4 @@
 //Chave local Storage
-//Adicionar redirecionamento em imagem capturada hoje
 
 let usuarios = [];
 let nomeUser = document.getElementById("nome-user");
@@ -19,6 +18,20 @@ function recuperarDados() {
     }
 }
 recuperarDados();
+
+
+//@ Função para ver imagem hoje
+const btnImgToday = document.getElementById("img-hoje")
+btnImgToday.addEventListener("click", nasaToday)
+
+function nasaToday() {
+    const valueKey = {
+        nomeUser: "Imagem do dia",
+        dateUser: today
+    }
+    localStorage.setItem("user-api", JSON.stringify(valueKey));
+    window.location.href = '/MyUniverse/result-api.html';
+}
 
 
 //@ Função para abrir o modal - adicionar
@@ -46,7 +59,6 @@ modalAdicionar.addEventListener("click", adicionarPerfil);
 const dateLimit = Date.parse("1995-06-16") //803260800000
 const today = Date.parse(new Date()) //Timestamp data hoje
 
-console.log(today)
 function adicionarPerfil() {
     let lis = [...document.getElementsByTagName("li")];
     

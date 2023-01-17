@@ -15,24 +15,31 @@ html, body {
 }
 
 body {
-    padding-top: 3rem;
-    height: calc(100% - 3rem);
+    padding-top: 8rem;
+    height: 100%;
+    top:0!important;
 }
 
 header {
     text-align: right;
-    padding: 1.5rem;
-    position: fixed;
+    margin: 0;
     top: 0;
     width: 100%;
     background-color: var(--azul-2);
+    position: fixed;
+    z-index: 100;
+}
+
+#menu {
+    padding: 1.5rem 0 0 0;
 }
 
 .menu {
     text-decoration: none;
     font-weight: bold;
     color: var(--white);
-    margin-right: 4rem;
+    margin-left: 1rem;
+    margin-right: 3rem;
     font-size: large;
 }
 
@@ -40,12 +47,36 @@ header {
     color: var(--rosa-2);
 }
 
-.api {
-    margin: 3rem;
-    padding: 3rem;
+#google_translate_element {
+    background-color: var(--azul-1);
+    text-align: start;
+    margin-top: 1rem;
+    padding-left: 3rem;
 }
 
-.imagem-api {
+#google_translate_element select {
+    background: var(--white);
+    color: var(--azul-2);
+    border-radius: 3px;
+    padding: 0.25rem;
+    align-items: flex-end;
+}
+
+.goog-te-banner-frame {
+    display:none !important;
+}
+
+#goog-gt-tt, .goog-te-balloon-frame {
+    display: none !important;
+}
+
+.api {
+    margin: 0 3rem;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.dados-user-api {
     display: flex;
 }
 
@@ -55,28 +86,51 @@ header {
     margin: auto 1rem;
 }
 
-h2 {
+#name {
     color: var(--azul-2);
+    text-transform: uppercase;
+    font-family: serif;
+    font-size: 2rem;
+    margin: 0;
 }
 
-h3 {
+#date {
     color: var(--rosa-2);
-}
-
-#img-api {
-    width: 30%;
 }
 
 #explanation-api {
     text-align: justify;
     font-size: large;
-    padding: 3rem 2rem 0 2rem;
+    padding: 0 2rem;
+    font-style: italic;
+    hyphens: auto;
+}
+
+a#link-img-api {
+    width: 50%;
+    height: fit-content;
+    align-items: flex-start;
+}
+
+#img-api {
+    width: calc(100% - 4rem);
+    transition: transform 1s ease-in-out;
+    margin-top: 1rem;
+    border-radius: 5px;
+    border: 10px var(--azul-1) ridge;
+    margin-right: 2rem;
+}
+
+#img-api:hover{
+    transform: scale(1.05);
 }
 
 footer {
     text-align: center;
-    height: fit-content;
+    height: 60px;
     width: 100%;
+    margin: 2rem 0;
+    padding: 1rem 0;
 }
 
 a {
@@ -89,7 +143,11 @@ a {
 #logofooter {
     max-height: 50px;
     animation: rotation 30s infinite linear;
-    margin: 0 3rem 0 0;
+    margin: 0;
+}
+
+.copyright {
+    margin-left: 1rem;
 }
 
 @keyframes rotation {

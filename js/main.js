@@ -1,7 +1,5 @@
 //Chave local Storage
 //Adicionar redirecionamento em imagem capturada hoje
-//Erro para data antes de 16/06/1995
-//Erro para depois da data de hoje
 
 let usuarios = [];
 let nomeUser = document.getElementById("nome-user");
@@ -45,36 +43,50 @@ abrirModalAdicionar();
 
 modalAdicionar.addEventListener("click", adicionarPerfil);
 
-//const dateLimit = new Date("1995-06-16") //803260800000
-//const dateLimit = Date.parse("1995-06-16") //803260800000
-//console.log(dateLimit.getDate())
+const dateLimit = Date.parse("1995-06-16") //803260800000
+const today = Date.parse(new Date()) //Timestamp data hoje
 
+console.log(today)
 function adicionarPerfil() {
     let lis = [...document.getElementsByTagName("li")];
-
+    
     if(lis.length < 5){
         nomeUserNovo = nomeUser.value;
         dateUser = Date.parse(stringDateUser.value);
 
-        console.log(dateUser)
+        avaliarDadosInformados(dateUser, nomeUserNovo)
         
-        if (nomeUserNovo && dateUser) {
-            criarLi(nomeUserNovo, dateUser, true);
-            fecharModal();
-        } else {
-            alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia");
-        }
+        //if (nomeUserNovo && dateUser) {
+        //    criarLi(nomeUserNovo, dateUser, true);
+        //    fecharModal();
+        //} else {
+        //    alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia");
+        //}
     } else {
         fecharModal();
         alert("O número máximo de pessoas cadastradas foi atingido. Para adicionar uma outra pessoa você pode remover as anteriores ou editar seus dados");
     }
 
-    /* 
-    switch(){
-        case ():
-    }*/
+   
 }
 
+function avaliarDadosInformados(dateUser, nomeUserNovo) {   
+    switch(true){
+        case(!nomeUserNovo || !dateUser):
+            alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia");
+            break;
+        case (dateUser < dateLimit):
+            alert("Sinto muito mas só temos imagens disponíveis a partir do dia 16/06/1995, por favor insira outra data :)");
+            break;
+        case (dateUser > today):
+            alert("Infelizmente ainda não conseguimos viajar no tempo, favor inserir uma data válida :)");
+            break;
+        default:
+            console.log("sim 4")
+            criarLi(nomeUserNovo, dateUser, true);
+            fecharModal();
+    }
+}
 
 //@ Função para criar as li's
 function criarLi(nomeUser, dateUser, precisaSalvar) {

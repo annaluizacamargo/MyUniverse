@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <div>
+        <div id="menu">
             <a class="menu" href="index.html">INÍCIO</a>
             <a class="menu" href="contato.html">CONTATO</a>
         </div>
@@ -20,10 +20,12 @@
     <div class="principal">
         <div class="container1">
             <h1><img src="img/header.svg" class="logo-principal" alt="Logo do site MyUniverse"></h1>
-            <h3 class="descricao-principal">Você faz parte do cosmos!!! <br> Para ver a imagem capturada do nosso universo exatamente no dia em que você nasceu basta <a id="p-adicionar" class="adicionar">adicionar um perfil</a> ou entrar em um já existente</h3>
+            <h3 class="descricao-principal">Todos nós fazemos parte do cosmos!!!</h3>
+            <h4 class="descricao-principal">Entretanto só temos imagens disponíveis do satélite da NASA a partir do dia 16/06/1995, caso você tenha nascido antes dessa data, pode conferir <a id="img-hoje">clicando aqui a foto de hoje capturada do satétite</a></h4>
         </div>
     
         <div class="container2">
+            <p class="descricao-secundaria">Para ver a imagem capturada do nosso universo exatamente no dia em que você nasceu basta <a id="p-adicionar" class="adicionar">adicionar um perfil</a> ou clicar em um já existente</p>
             <ul id="usuarios">
             </ul>
             <button id="btn-adicionar" class="adicionar">ADICIONAR</button>
@@ -32,14 +34,18 @@
 
     <div id="modal-overlay">
         <div class="modal">
+            <div class="span">
+                <span class="close">&times;</span>
+            </div>
+
             <div class="nova-tarefa">
                 <h3>Adicionando uma nova pessoa</h3>
                 <input id="nome-user" type="text" placeholder="Digite como gostaria de ser chamado">
                 <p>Informe sua data de nascimento:</p>
                 <input type="date" id="date">
             </div>
-            <button class="btn-tarefa" id="add">ADICIONAR</button>
-            <button class="btn-tarefa" id="edit">EDITAR</button>
+            <button class="btn-acao" id="add">ADICIONAR</button>
+            <button class="btn-acao" id="edit">EDITAR</button>
         </div>
     </div>
 

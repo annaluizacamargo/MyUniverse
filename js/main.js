@@ -22,6 +22,7 @@ recuperarDados();
 const btnImgToday = document.getElementById("img-hoje");
 btnImgToday.addEventListener("click", nasaToday);
 function nasaToday() {
+    'use strict'
     const valueKey = {
         nomeUser: "Imagem do dia",
         dateUser: today
@@ -39,9 +40,11 @@ let nomeUserNovo = "";
 let dateUser = "";
 
 function abrirModalAdicionar() {
+    'use strict'
     const pAdicionar = document.getElementById("p-adicionar");
 
     function exibirModal() {
+        'use strict'
         modal.style.display = "flex";
         modalAdicionar.style.display = "inline";
         modalEditar.style.display = "none";
@@ -56,6 +59,7 @@ const today = Date.parse(new Date()); //Timestamp data hoje
 modalAdicionar.addEventListener("click", adicionarPerfil);
 
 function adicionarPerfil() {
+    'use strict'
     let lis = [...document.getElementsByTagName("li")];
 
     if (lis.length < 5) {
@@ -69,6 +73,7 @@ function adicionarPerfil() {
 }
 
 function avaliarDadosInformados(dateUser, nomeUserNovo) {
+    'use strict'
     switch (true) {
         case (!nomeUserNovo || !dateUser):
             alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia");
@@ -82,13 +87,14 @@ function avaliarDadosInformados(dateUser, nomeUserNovo) {
         default:
             criarLi(nomeUserNovo, dateUser, true);
             fecharModal();
-            document. location. reload();
+            document.location.reload();
     }
 }
 
 
 //@ Função para criar as li's
 function criarLi(nomeUser, dateUser, precisaSalvar) {
+    'use strict'
     const ul = document.getElementById("usuarios");
 
     //criando a li =
@@ -123,6 +129,7 @@ function criarLi(nomeUser, dateUser, precisaSalvar) {
 
 //@ Função para salvar no localstorage
 function salvarLocalstorage(precisaSalvar, nomeUser, dateUser) {
+    'use strict'
     if (precisaSalvar) {
         const usuario = {
             nomeUser: nomeUser,
@@ -137,6 +144,7 @@ function salvarLocalstorage(precisaSalvar, nomeUser, dateUser) {
 //@ Função para editar o Usuário
 let nameUserBefore = null;
 function edit() {
+    'use strict'
     modal.style.display = "flex";
     modalAdicionar.style.display = "none";
     modalEditar.style.display = "inline";
@@ -157,6 +165,7 @@ function edit() {
 }
 
 function editLi() {
+    'use strict'
     modalEditar.addEventListener("click", () => {
         let inputNovoNome = modalEditar.parentElement.querySelector("#nome-user");
         let inputNovoDate = modalEditar.parentElement.querySelector("#date");
@@ -164,27 +173,32 @@ function editLi() {
         let novoNome = inputNovoNome.value;
         nameUserBefore.textContent = novoNome;
         let novoDate = Date.parse(inputNovoDate.value);
-
-        if (!novoNome) {
-            alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia");
-            document. location. reload()            
-        } else if (!novoDate) {
-            alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia");
-        } else if (novoDate < dateLimit) {
-            alert("Sinto muito mas só temos imagens disponíveis a partir do dia 16/06/1995, por favor insira outra data :)");
-        } else if (novoDate > today) {
-            alert("Infelizmente ainda não conseguimos viajar no tempo, favor inserir uma data válida :)");
-        } else {
-            update(keyAntiga, novoNome, novoDate);
-            fecharModal();
-        }
+        avaliarDadosEditar(novoNome, novoDate, keyAntiga);
     })
 }
 editLi();
 
+function avaliarDadosEditar(novoNome, novoDate, keyAntiga) {
+    'use strict'
+    if (!novoNome) {
+        alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia");
+        document.location.reload();
+    } else if (!novoDate) {
+        alert("Por favor, preencha todos os dados para conseguirmos te adicionar na nossa galáxia");
+    } else if (novoDate < dateLimit) {
+        alert("Sinto muito mas só temos imagens disponíveis a partir do dia 16/06/1995, por favor insira outra data :)");
+    } else if (novoDate > today) {
+        alert("Infelizmente ainda não conseguimos viajar no tempo, favor inserir uma data válida :)");
+    } else {
+        update(keyAntiga, novoNome, novoDate);
+        fecharModal();
+    }
+}
+
 
 //@ Função para atualizar os dados do localstorage
 function update(keyAntiga, novoNome, novoDate) {
+    'use strict'
     localStorage.removeItem(keyAntiga);
     localStorage.setItem(novoNome, JSON.stringify({nomeUser: novoNome, dateUser: novoDate}));
 }
@@ -192,6 +206,7 @@ function update(keyAntiga, novoNome, novoDate) {
 
 //@ Função para remover o Usuário
 function remove(event) {
+    'use strict'
     const liRemove = event.target.parentElement;
     const nameUserRemove = liRemove.firstElementChild.textContent;
 
@@ -205,12 +220,14 @@ const overlay = document.getElementById("modal-overlay");
 const closeModal = document.querySelector(".close");
 
 function fecharModal() {
+    'use strict'
     overlay.style.display = "none";
     nomeUser.value = "";
     stringDateUser.value = "";
 }
 
 function fecharModalClickFora() {
+    'use strict'
     document.documentElement.onclick = (event) => {
         if (event.target == overlay) {
             overlay.style.display = "none";

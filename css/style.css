@@ -22,10 +22,16 @@ body {
 
 header {
     text-align: right;
-    padding: 1.5rem;
-    position: fixed;
+    margin: 0;
     top: 0;
     width: 100%;
+    background: linear-gradient(to right, var(--azul-3) 0%, var(--azul-3) 50%, var(--white) 50%, var(--white) 100%);
+    position: fixed;
+    z-index: 100;
+}
+
+#menu {
+    padding: 1.5rem 0 0 0;
 }
 
 .menu {
@@ -192,6 +198,8 @@ ul {
     display: none; /*display: inline*/
 }
 
+
+/*Página contato*/
 .contato {
     width: 50%;
     text-align: center;
@@ -245,5 +253,87 @@ p.star {
     }
     to {
       transform: rotate(359deg);
+    }
+}
+
+
+/*Responsividade*/
+@media (max-width: 769px) {
+    html {
+        background-color: var(--white);
+    }
+
+    body {
+        max-width: 100%;
+        max-height: 100%;
+        background-color: var(--white);
+    }
+
+    header {
+        background: var(--azul-2);
+    }
+
+    #menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px var(--white) solid;
+    }
+
+    .menu {
+        color: white;
+        padding: 1.5rem 3rem;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .principal {
+        display: block;
+    }
+
+    .container1 {
+        width: 100%;
+        background: linear-gradient(to bottom, var(--azul-2), var(--azul-3));
+        margin: 0;
+        padding-bottom: 2rem;
+    }
+
+    .logo-principal {
+        padding-top: 2rem;
+        width: 50%;
+    }
+
+    .descricao-principal {
+        color: var(--white);
+        font-weight: normal;
+        padding: 0 3rem;
+        margin: 0;
+    }
+
+    /*Página principal*/
+
+
+    /*Página contato*/
+    .contato {
+        background-color: var(--white);
+        width: 100%;
+    }
+
+    .contato p {
+        font-size: medium;
+        padding: 2rem 4rem 0 4rem;
+    }
+
+    p.star {
+        padding: 0.5rem;
+        margin: 0;
+    }
+
+    #footer {
+        height: 40%;
+        padding-bottom: 1rem;
     }
 }

@@ -41,9 +41,9 @@ header {
 }
 
 .principal {
-    padding: 0 2rem;
     display: flex;
-    height: calc(100% - 3rem);
+    height: calc(100%);
+    width: 100%;
 }
 
 .container1 {
@@ -200,16 +200,18 @@ ul {
 
 .contato p {
     font-size: large;
-    width: 50%;
+    padding: 4rem;
+    padding-bottom: 0;
     margin: 0 auto;
 }
 
 .btns {
     display: flex;
     color: var(--rosa-2);
-    width: 60%;
-    margin: 3rem auto;
+    max-width: 100%;
+    padding: 2.5rem;
     align-items: center;
+    justify-content: center;
 }
 
 .btn-contato {
@@ -217,13 +219,18 @@ ul {
     background-color: var(--rosa-1);
     border-radius: 10px;
     border-color: var(--rosa-1);
-    width: 7rem;
+    width: 5rem;
 }
 
 .btn-contato:hover {
     font-weight: bold;
     transform: scale(1.05);
     cursor: pointer;
+}
+
+p.star {
+    padding: 0.5rem;
+    margin: 0;
 }
 
 #logo {

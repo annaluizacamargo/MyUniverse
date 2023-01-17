@@ -186,13 +186,13 @@ ul {
 }
 
 #date {
-    background-color: var(--white);
-    border: none;
+    background-color: gainsboro;
+    border: 2px var(--azul-1) solid;
     text-align: center;
-    color: var(--azul-3);
+    color: var(--azul-2);
     width: fit-content;
     font-weight: bold;
-    margin: 0 0 1rem 0;
+    margin: 0.25rem 0 1rem 0;
 }
 
 .btn-acao {
@@ -350,9 +350,12 @@ p.star {
 
     /*Modal*/
     .modal {
-        width: 70%;
+        width: 80%;
     }
 
+    .nova-tarefa {
+        padding: 0 2rem;
+    }
 
     /*Página contato*/
     .contato {

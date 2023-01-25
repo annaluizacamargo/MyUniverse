@@ -18,7 +18,7 @@ Caso queira saber um pouquinho mais do processo de elaboração e criação, fiz
   <img align="center" alt="Anna-Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
   <img align="center" alt="Anna-HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
   <img align="center" alt="Anna-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
-  API da NADA disponível em = https://api.nasa.gov/.
+  API da NASA disponível em = https://api.nasa.gov/.
 </div><br><br>
 
 ## 💻✨ Rodando o projeto

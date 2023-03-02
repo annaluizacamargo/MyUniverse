@@ -14,15 +14,23 @@ const nameUser = dadosLocalStorageConvertidos.nomeUser;//Capturando o nome/apeli
 nomeAPI.textContent = nameUser; //Exibindo nome na tela
 
 const dateUser = new Date(dadosLocalStorageConvertidos.dateUser); //Capturando a data em timestamp e convertendo em data por extenso
-const date = dateUser.toLocaleDateString('en-CA', {timeZone: "UTC"}); //Convertendo a data para o modelo aceito pela API (aaaa-mm-dd)
+
+const date = new Intl.DateTimeFormat(
+    'fr-CA', {
+        timeZone: 'Etc/GMT-3',
+        dateStyle: 'short',
+    }).format(dateUser); //Convertendo a data para o modelo aceito pela API (aaaa-mm-dd)
+
 dateAPI.textContent = dateUser.toLocaleDateString('pt-br', {timeZone: "UTC"}); //Convertendo a data para o modelo brasileiro (dd/mm/aaaa) e exibindo na tela
 
 
 //@ Capturando os dados da API da NASA e integrando ao DOM
 async function buscaImagemNASA(date) {
+    //console.log(date)
     const apiKey = "bkk31nnfNbtwuzjWOiF5GZKs2IGyhE4HVEANlUcy";
     const consultaDadosData = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`);
     const dadosConvertidos = await consultaDadosData.json();
+    //console.log(dadosConvertidos)
     
     imgAPI.setAttribute("src", `${dadosConvertidos.url}`);
     linkImgAPI.setAttribute("href", `${dadosConvertidos.url}`);

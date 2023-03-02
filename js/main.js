@@ -28,7 +28,7 @@ function nasaToday() {
         dateUser: today
     }
     localStorage.setItem("user-api", JSON.stringify(valueKey));
-    window.location.href = '/MyUniverse/result-api.html';
+    window.location.href = '/result-api.html';
 }
 
 
@@ -247,6 +247,6 @@ btnsUser.forEach((btnUser) => {
     btnUser.addEventListener("click", (event) => {
         const valueKey = localStorage.getItem(`${event.target.textContent}`);
         localStorage.setItem("user-api", valueKey);
-        window.location.href = '/MyUniverse/result-api.html';
+        window.location.href = '/result-api.html';
     })
 })

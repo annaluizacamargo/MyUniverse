@@ -1,7 +1,7 @@
 ![Group 14](https://user-images.githubusercontent.com/100868704/212987606-e1234595-2eba-4fe2-beb1-161b721f7047.png)
 
 ## 🚀✨ Proposta do Desafio
-Bem-vindo(a) ao "MyUniverse", um site onde é possível visualizar o registro fotográfico da NASA capturado exatamente no dia em que você veio ao mundo. Afinal, somos todos partes pequenas de algo incrível e fascinante que é o nosso universo, estando disponível para acesso no link: <https://myuniverse.surge.sh/>.
+Bem-vindo(a) ao "MyUniverse", um site onde é possível visualizar o registro fotográfico da NASA capturado exatamente no dia em que você veio ao mundo. Afinal, somos todos partes pequenas de algo incrível e fascinante que é o nosso universo, estando disponível para acesso no link: <https://my-universe-psi.vercel.app/>.
 
 ![Resultado Final](https://user-images.githubusercontent.com/100868704/212997045-34c2376c-2eda-46c0-97ce-437ffa5cdf0c.png)
 
@@ -23,7 +23,7 @@ Caso queira saber um pouquinho mais do processo de elaboração e criação, fiz
 
 ## 💻✨ Rodando o projeto
 Para rodar o repositório é necessário clonar o mesmo, e procurar no seu explorador de arquivos o HTML para iniciar o projeto: `index.html`
-Ou simplesmente clicar no link onde o mesmo está disponível para acesso: <https://myuniverse.surge.sh/>
+Ou simplesmente clicar no link onde o mesmo está disponível para acesso: <https://my-universe-psi.vercel.app/>
 Observação: os testes referente ao layout e responsividade foram realizadas somente utilizando o Google Chrome e Android.<br>
 
 https://user-images.githubusercontent.com/100868704/212992839-7e8bd944-0862-463e-8cf6-7297e8b66aa4.mp4

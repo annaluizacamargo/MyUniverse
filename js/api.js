@@ -17,7 +17,7 @@ const dateUser = new Date(dadosLocalStorageConvertidos.dateUser); //Capturando a
 
 const date = new Intl.DateTimeFormat(
     'fr-CA', {
-        timeZone: 'Etc/GMT-3',
+        timeZone: 'Etc/GMT',
         dateStyle: 'short',
     }).format(dateUser); //Convertendo a data para o modelo aceito pela API (aaaa-mm-dd)
 
